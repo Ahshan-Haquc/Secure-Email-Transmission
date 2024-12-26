@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Login</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha512/0.8.0/sha512.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #3e5879;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .form-container {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        width: 600px;
+      }
+      h1 {
+        text-align: center;
+        color: #ff4d6d;
+        position: relative;
+        bottom: 20px;
+      }
+      label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #ff4d6d;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #cc3a52;
+      }
+      .error {
+        color: red;
+        font-size: 14px;
+        margin-bottom: 15px;
+        display: none;
+      }
+    </style>
+    <script>
+      async function handleLogin(event) {
+        event.preventDefault();
+
+        const usernameOrId = document.getElementById("username-or-id").value;
+        const password = document.getElementById("password").value;
+
+        const response = await fetch("/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ usernameOrId, password }),
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          alert("Login successful!");
+          window.location.href = "/index.html";
+        } else {
+          document.getElementById("error-message").textContent = data.message;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="form-container">
+      <h1>Student Login</h1>
+      <form onsubmit="handleLogin(event)">
+        <label for="username-or-id">Username or Student ID</label>
+        <input type="text" id="username-or-id" name="usernameOrId" required />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required />
+
+        <div id="error-message" class="error"></div>
+
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: flex-start; */
+  align-items: center;
+  /* height: 100vh; */
+  background-color: #3e5879;
+  gap: 25px;
+  color: black;
+}
+h1 {
+  font-size: 60px;
+  color: #fffcf8;
+}
+.container {
+  text-align: center;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 60vw;
+  height: 50vh;
+  background-color: #fffcf8;
+}
+
+input,
+textarea {
+  width: 97%;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 16px;
+  color: black;
+}
+textarea {
+  height: 50%;
+}
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  background: #198754;
+  color: white;
+  cursor: pointer;
+  width: 258px;
+}
+
+button:hover {
+  background: #115b38;
+  transform: scale(1.1);
+}
+.russo-one-regular {
+  font-family: "Russo One", serif;
+  font-weight: 400;
+  font-style: normal;
+}
